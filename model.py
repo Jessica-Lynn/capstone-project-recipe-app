@@ -25,7 +25,7 @@ class User(db.Model):
     def __repr__(self):
         return f'<User user_id = {self.user_id} username = {self.username} password = {self.password}>'
 
-    class Recipe(db.Model):
+class Recipe(db.Model):
     """Data model for a recipe."""
 
     __tablename__ = 'recipes'
@@ -46,17 +46,16 @@ class User(db.Model):
 
     num_servings = db.Column(db.Integer)
 
-    prep_time_in_hours = db.Column(db.Integer)  #check docs- can this be a float -- 0.5 hours?
+    prep_time_in_hours = db.Column(db.Integer) 
 
-    image = db.Column(db.String(1000))    #will use string for now
-                                          #need to find out how API can work with images
+    image = db.Column(db.String(1000))    
 
     ingredients = db.relationship('Ingredient', backref = 'recipe')
 
     def __repr__(self):
         return f'<Recipe recipe_id = {self.recipe_id} user_id = {self.user_id} recipe_name = {self.recipe_name} recipe_instructions = {self.recipe_instructions} num_servings = {self.num_servings} prep_time_in_hours = {self.prep_time_in_hours}>'
 
-    class Ingredient(db.Model):
+class Ingredient(db.Model):
     """Data model for an ingredient."""
 
     __tablename__ = 'ingredients'
@@ -74,17 +73,17 @@ class User(db.Model):
                         autoincrement = True,
                         nullable = False)
 
-    measurement = db.Column(db.Float,           #check docs- is float okay to use?
+    measurement = db.Column(db.Float,           
                             nullable = False)
 
     ingredient_prep = db.Column(db.String(25),
                         nullable = False)
     
     def __repr__(self):
-        return f'<Ingredient ingredient_name = {self.ingredient_name} recipe_id = {self.recipe_id} measurement = {self.measurement} ingredient_prep = {self.ingredient_prep}>'
+        return f'<Ingredient ingredient_id = {self.ingredient_id} ingredient_name = {self.ingredient_name} recipe_id = {self.recipe_id} measurement = {self.measurement} ingredient_prep = {self.ingredient_prep}>'
 
 
-def connect_to_db(flask_app, db_uri="postgresql:///RecipeInfo", echo=True):
+def connect_to_db(flask_app, db_uri="postgresql:///RecipeBox", echo=True):
     flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
     flask_app.config["SQLALCHEMY_ECHO"] = echo
     flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
