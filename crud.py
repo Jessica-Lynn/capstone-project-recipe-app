@@ -3,10 +3,10 @@
 from model import db, User, Recipe, Ingredient, connect_to_db
 
 
-def create_user(user_id, username, password):
+def create_user(user_id, email, password):
     """Create and return a new user."""
 
-    user = User(user_id=user_id, username=username, password=password)  #Note to self: add email here INSTEAD of username and correct this in model.py
+    user = User(user_id=user_id, email=email, password=password)  #Note to self: add email here INSTEAD of username and correct this in model.py
 
     db.session.add(user)
     db.session.commit()
