@@ -1,12 +1,12 @@
 """CRUD operations."""
 
-from model import db, User, Recipe, Ingredient, connect_to_db
+from model import db, User, Recipe, Ingredient, RecipeIngredient, connect_to_db
 
 
-def create_user(user_id, email, password):
+def create_user(email, password):
     """Create and return a new user."""
 
-    user = User(user_id=user_id, email=email, password=password)  #Note to self: add email here INSTEAD of username and correct this in model.py
+    user = User(email=email, password=password)  
 
     db.session.add(user)
     db.session.commit()
@@ -15,16 +15,15 @@ def create_user(user_id, email, password):
 
 
 
-def create_recipe(recipe_id, user_id, recipe_name, recipe_instructions, num_servings, prep_time_in_hours, image):
+def create_recipe(recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min, image):
     """Create and return a new recipe."""
 
     recipe = Recipe(
-        recipe_id=recipe_id,
-        user_id=user_id,
         recipe_name=recipe_name,
         recipe_instructions=recipe_instructions,
         num_servings=num_servings,
-        prep_time_in_hours=prep_time_in_hours,
+        prep_time_in_min=prep_time_in_min,
+        cook_time_in_min=cook_time_in_min,
         image=image
     )
 
@@ -35,19 +34,27 @@ def create_recipe(recipe_id, user_id, recipe_name, recipe_instructions, num_serv
 
 
 
-def create_ingredient(ingredient_id, ingredient_name, recipe_id, measurement, ingredient_prep):
+def create_ingredient(ingredient_name):
     """Create and return a new ingredient."""
 
-    ingredient = Ingredient(ingredient_id=ingredient_id,
-                            ingredient_name=ingredient_name,
-                            recipe_id=recipe_id,
-                            measurement=measurement,
-                            ingredient_prep=ingredient_prep)
+    ingredient = Ingredient(ingredient_name=ingredient_name)
 
     db.session.add(ingredient)
     db.session.commit()
 
     return ingredient
+
+
+
+def create_recipe_specific_ingredient(measurement, prep_info):
+    """Create and return an ingredient that is specific to a certain recipe id"""
+
+    recipe_ingredient = RecipeIngredient(measurement=measurement, prep_info=prep_info)      #verify that I do not add forgein keys here because they are also on autoincrement
+
+    db.session.add(recipe_ingredient)
+    db.session.commit()
+
+    return recipe_ingredient
 
 
 
