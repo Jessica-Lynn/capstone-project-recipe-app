@@ -1,4 +1,4 @@
-"""Models for recipe conversion app"""
+"""Models for Recipe Conversion App"""
 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -43,11 +43,11 @@ class Recipe(db.Model):
 
     recipe_instructions = db.Column(db.String(2000))
 
-    num_servings = db.Column(db.Integer)
+    num_servings = db.Column(db.String(25))
 
-    prep_time_in_min = db.Column(db.Integer) 
+    prep_time_in_min = db.Column(db.String(30)) 
 
-    cook_time_in_min = db.Column(db.Integer)
+    cook_time_in_min = db.Column(db.String(30))
 
     image = db.Column(db.String(1000))    
 
@@ -55,10 +55,11 @@ class Recipe(db.Model):
         return f'<Recipe recipe_id = {self.recipe_id} user_id = {self.user_id} recipe_name = {self.recipe_name} recipe_instructions = {self.recipe_instructions} num_servings = {self.num_servings} prep_time_in_min = {self.prep_time_in_min} cook_time_in_min = {self.cook_time_in_min} image = {self.image}>'
 
 
-class Ingredient(db.Model):
-    """Data model for an ingredient."""
+class IngredientType(db.Model):
+    """Data model for a GENERAL ingredient type (without measurements); 
+    for example: flour, eggs, butter."""
 
-    __tablename__ = 'ingredients'
+    __tablename__ = 'ingredient_types'
 
     ingredient_id = db.Column(db.Integer,
                                 primary_key=True,
@@ -68,34 +69,37 @@ class Ingredient(db.Model):
                                 nullable=False)
     
     def __repr__(self):
-        return f'<Ingredient ingredient_id = {self.ingredient_id} ingredient_name = {self.ingredient_name}>'
+        return f'<IngredientType ingredient_id = {self.ingredient_id} ingredient_name = {self.ingredient_name}>'
 
 
 
-class RecipeIngredient(db.Model):
-    """Data Model for an Ingredient specific to a certain Recipe"""
+class IngredientDetail(db.Model):
+    """Data Model for an Ingredient's Details; can be specific to a recipe_id.
+    For example, for 'Funfetti Cake' with recipe_id = 1:    2 level cups gluten-free flour blend, 
+                                                            2 eggs, whisked until blended,
+                                                            4 tablespoons unsalted butter, at room temperature."""
 
-    __tablename__ = 'recipe_ingredients'
+    __tablename__ = 'ingredient_details'
 
-    recipe_ingredient_id = db.Column(primary_key=True, 
-                                    autoincrement=True)
+    ingred_detail_id = db.Column(primary_key=True, 
+                                autoincrement=True)
 
     recipe_id = db.Column(db.Integer, 
-                            db.ForeignKey('recipes.recipe_id'))               #foreign key relating back to the recipe table
+                            db.ForeignKey('recipes.recipe_id'))                     #foreign key relating back to the recipe table
     
     ingredient_id = db.Column(db.Integer, 
-                                db.ForeignKey('ingredients.ingredient_id'))    #foreign key relating back to the ingredient table
+                                db.ForeignKey('ingredient_types.ingredient_id'))    #foreign key relating back to the ingredientType table
     
-    measurement = db.Column(db.Float, 
-                            nullable=False)                   #API has this as a string -- but for conversion, would I want Int or Float?
+    measurement = db.Column(db.String(30), 
+                            nullable=False)                                         #API has this as a string -- but for recipe conversion, double check if I would want Int or Float instead?
     
     prep_info = db.Column(db.String(25))                        
 
-    recipe = db.relationship('Recipe', backref='recipe_ingredient')
-    ingredient = db.relationship('Ingredient', backref='recipe_ingredient')
+    recipe = db.relationship('Recipe', backref='ingredient_details')
+    ingredient = db.relationship('IngredientType', backref='ingredient_details')
 
     def __repr__(self):
-        return f'< recipe_ingredient_id = {self.recipe_ingredient_id}, recipe_id = {self.recipe_id}, ingredient_id = {self.ingredient_id}, measurement = {self.measurement} prep_info = {self.prep_info}>'
+        return f'<IngredientDetail ingred_detail_id = {self.ingred_detail_id}, recipe_id = {self.recipe_id}, ingredient_id = {self.ingredient_id}, measurement = {self.measurement} prep_info = {self.prep_info}>'
 
     
 def connect_to_db(flask_app, db_uri="postgresql:///RecipeBox", echo=True):

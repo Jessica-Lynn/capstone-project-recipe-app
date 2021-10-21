@@ -1,6 +1,6 @@
-"""CRUD operations."""
+"""CRUD operations for Recipe Conversion App."""
 
-from model import db, User, Recipe, Ingredient, RecipeIngredient, connect_to_db
+from model import db, User, Recipe, IngredientType, IngredientDetail, connect_to_db
 
 
 def create_user(email, password):
@@ -34,10 +34,10 @@ def create_recipe(recipe_name, recipe_instructions, num_servings, prep_time_in_m
 
 
 
-def create_ingredient(ingredient_name):
-    """Create and return a new ingredient."""
+def create_ingredient_type(ingredient_name):
+    """Create and return a new ingredient name."""
 
-    ingredient = Ingredient(ingredient_name=ingredient_name)
+    ingredient = IngredientType(ingredient_name=ingredient_name)
 
     db.session.add(ingredient)
     db.session.commit()
@@ -46,15 +46,15 @@ def create_ingredient(ingredient_name):
 
 
 
-def create_recipe_specific_ingredient(measurement, prep_info):
-    """Create and return an ingredient that is specific to a certain recipe id"""
+def create_ingredient_detail(measurement, prep_info):
+    """Create and return an ingredient's details using ingredient_id and recipe_id for a specific recipe."""
 
-    recipe_ingredient = RecipeIngredient(measurement=measurement, prep_info=prep_info)      #verify that I do not add forgein keys here because they are also on autoincrement
+    ingredient_detail = IngredientDetail(measurement=measurement, prep_info=prep_info)      #verify that I do not add forgein keys here because they are also on autoincrement
 
     db.session.add(recipe_ingredient)
     db.session.commit()
 
-    return recipe_ingredient
+    return ingredient_detail
 
 
 
