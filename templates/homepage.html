@@ -2,5 +2,45 @@
 {% block title %}Recipe App Homepage{% endblock %}
 
 {% block body %}
-  <h1>Welcome!</h1>
+  <h1>Welcome!  (Add working title of app)</h1>
+
+  <h3>(Add tagline to add underneath working title)</h3>
+
+  <h2>See What This App Does</h2>
+  <ul>
+    <li><a href="/_______">Scroll Down to See How App Works</a></li>
+    <li><a href="/_______">Scroll Down to See Some Examples</a></li>
+    <li><a href="/_______">Scroll Down to See Reviews of This App</a></li>
+  </ul>
+
+  <!-- add buttons to submit Create Account info and Submit Log In info -->
+  <h2>Create an Account</h2>
+  <form action="/users" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
+
+  <h2>Log In</h2>
+  <form action="/login" method="POST">
+    <p>
+      Email <input type="text" name="email">
+    </p>
+
+    <p>
+      Password <input type="password" name="password">
+    </p>
+
+    <p>
+      <input type="submit">
+    </p>
+  </form>
 {% endblock %}
