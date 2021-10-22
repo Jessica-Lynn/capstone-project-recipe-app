@@ -42,7 +42,7 @@ def user_profile_page():
 def build_recipe():
     """User can build a recipe and set it to dietary specification"""
 
-    return render_template('/build_recipe.html')
+    return render_template('build_recipe.html')
 
 
 
@@ -50,7 +50,7 @@ def build_recipe():
 def display_recipe():
     """User receives back recipe according to dietary specification"""
 
-    return render_template('/display_recipe')
+    return render_template('display_recipe.html')
 
 
 
@@ -58,7 +58,7 @@ def display_recipe():
 def user_logged_out():
     """Tells user that they've successfully logged out; has button that links back to homepage."""
 
-    return render_template('/')    
+    return render_template('user_logged_out.html')    
 
 
 
