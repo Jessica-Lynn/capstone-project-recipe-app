@@ -81,7 +81,8 @@ class IngredientDetail(db.Model):
 
     __tablename__ = 'ingredient_details'
 
-    ingred_detail_id = db.Column(primary_key=True, 
+    ingred_detail_id = db.Column(db.Integer,
+                                primary_key=True, 
                                 autoincrement=True)
 
     recipe_id = db.Column(db.Integer, 
