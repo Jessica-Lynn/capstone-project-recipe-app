@@ -8,39 +8,25 @@
 
   <h2>See What This App Does</h2>
   <ul>
-    <li><a href="/_______">Scroll Down to See How App Works</a></li>
-    <li><a href="/_______">Scroll Down to See Some Examples</a></li>
-    <li><a href="/_______">Scroll Down to See Reviews of This App</a></li>
+    <li><a href="/_______">See How App Works</a></li>
+    <li><a href="/_______">See Some Examples</a></li>
+    <li><a href="/_______">See Reviews of This App</a></li>
   </ul>
 
   <!-- add buttons to submit Create Account info and Submit Log In info -->
-  <h2>Create an Account</h2>
-  <form action="/users" method="POST">
-    <p>
-      Email <input type="text" name="email">
-    </p>
+  <h2>New Users: Create an Account</h2>
+      <form action="/create_new_account">
+        <button type="submit">Create My Account</button>
+      </form>
 
-    <p>
-      Password <input type="password" name="password">
-    </p>
+  <h2>Existing Users: Log In</h2>
+      <form action="/user_profile_page">
+          <label for="email-input">Email:</label>
+          <input type="text" name="email" id="email-input"/>
 
-    <p>
-      <input type="submit">
-    </p>
-  </form>
+          <label for="password-input">Password:</label>
+          <input type="password" name="password" id="password-input">
 
-  <h2>Log In</h2>
-  <form action="/login" method="POST">
-    <p>
-      Email <input type="text" name="email">
-    </p>
-
-    <p>
-      Password <input type="password" name="password">
-    </p>
-
-    <p>
-      <input type="submit">
-    </p>
-  </form>
+        <button type="submit">Log In</button>
+      </form>
 {% endblock %}

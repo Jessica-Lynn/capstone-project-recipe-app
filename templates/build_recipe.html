@@ -3,6 +3,42 @@
 
 {% block body %}
   <h1>Build a new recipe!</h1>
+
+  <form action="/display_recipe">
+    <label for= "conversion-type">Select how you want to change your recipe:</label>
+    <input type="radio" name="conversion-type" value="gluten-free">Make it Gluten-Free >
+    <br><br><br>
+
+    <label for="recipe-name">Recipe Name:</label>
+    <input type="text" name="recipe_name" id="recipe-name"/>   <!-- Should this be the same as recipe_name in model.py? -->
+    <br><br>
+    
+    <label for="num_servings">Number of Servings:</label>
+    <input type="text" name="num_servings" id="num_servings">
+    <br><br>
+    
+    <label for="prep_time">Prep Time in Minutes:</label>
+    <input type="text" name="prep_time" id="prep_time">
+    <br><br>
+    
+    <label for="cook_time">Cook Time in Minutes:</label>
+    <input type="text" name="cook_time" id="cook_time">
+    <br><br>
+
+    <label for="ingred_1">Add one Ingredient:</label>
+    <input type="text" name="ingred_1" id="ingred_1">       <!-- Add ingredient type -->
+    <br><br>
+
+    <label for="ingred_1_details">How that ingredient should be prepped:</label>    <!-- Add the prep details for that ingredient-->
+    <input type="text" name="ingred_1_details" id="ingred_1_details">
+    <br><br>
+
+    <label for="recipe_instructions">Recipe Instructions:</label>
+    <input type="text" name="recipe_instructions" id="recipe_instructions">
+    <br><br>
+
+  <button type="submit">Build My Recipe</button>
+</form>
 {% endblock %}
 
 <!-- Have:   1) working title of app 

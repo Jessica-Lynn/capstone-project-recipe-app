@@ -18,6 +18,9 @@ app.jinja_env.undefined = StrictUndefined
 def homepage():
     """View homepage. Has button for existing user to log in and button to create new account"""
 
+    user_email = request.args.get('email')
+    user_password = request.args.get('password')
+
     return render_template('homepage.html')
 
 

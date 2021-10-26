@@ -38,8 +38,7 @@ class Recipe(db.Model):
     user_id = db.Column(db.Integer,
                         db.ForeignKey('users.user_id'))
 
-    recipe_name = db.Column(db.String(50),
-                        nullable=False)
+    recipe_name = db.Column(db.String(50))
 
     recipe_instructions = db.Column(db.String(2000))
 
