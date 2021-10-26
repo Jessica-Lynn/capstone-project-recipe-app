@@ -5,9 +5,15 @@
   <h1>Build a new recipe!</h1>
 
   <form action="/display_recipe">
-    <label for= "conversion-type">Select how you want to change your recipe:</label>
-    <input type="radio" name="conversion-type" value="gluten-free">Make it Gluten-Free >
-    <br><br><br>
+    <label for= "conversion-type">Select how you want to change your recipe:</label><br>
+        <input type="radio" name="conversion-type" value="gluten-free">Make it Gluten-Free </input><br>
+        <input type="radio" name="conversion-type" value="vegan">Make it Vegan </input><br>
+        <input type="radio" name="conversion-type" value="halal">Make it Halal </input><br>
+        <input type="radio" name="conversion-type" value="kosher">Make it Kosher </input><br>
+        <input type="radio" name="conversion-type" value="dairy-free">Make it Dairy-Free </input><br>
+        <input type="radio" name="conversion-type" value="nut-free">Make it Nut-Free </input><br>
+        <input type="radio" name="conversion-type" value="peanut-free">Make it Peanut-Free </input>
+        <br><br><br>
 
     <label for="recipe-name">Recipe Name:</label>
     <input type="text" name="recipe_name" id="recipe-name"/>   <!-- Should this be the same as recipe_name in model.py? -->
@@ -37,8 +43,16 @@
     <input type="text" name="recipe_instructions" id="recipe_instructions">
     <br><br>
 
-  <button type="submit">Build My Recipe</button>
-</form>
+    <button type="submit">Build My Recipe</button>
+  </form>
+  <br>
+  <br>
+
+  <form action="/user_profile_page">
+    <label for= "cancel">To Cancel This Recipe and Return to My Profile Page:</label>
+    <button type="submit">Cancel This Recipe</button>
+    <br><br><br>
+  </form>
 {% endblock %}
 
 <!-- Have:   1) working title of app 

@@ -2,24 +2,30 @@
 {% block title %}Recipe App - User Profile Page{% endblock %}
 
 {% block body %}
-  <h3>(Working title of Recipe App</h3>
+  <h3>(Working title of Recipe App)</h3>
 
   <h1> (Username's) Profile Page</h1>
 
   <h2>(Username's) Recipe Box</h2>
   <ol>
-    <li>Recipe 1 User created</li>
-    <li>Recipe 2 User created</li>
-    <li>Recipe 3 User created</li>
+    <li><a href="/_______">Recipe 1 User created</a></li>
+    <li><a href="/_______">Recipe 2 User created</a></li>
+    <li><a href="/_______">Recipe 3 User created</a></li>
   </ol>
+  <br>
+  <br>
+
+  <form action="/build_recipe">
+    <button type="submit">Build a New Recipe</button>
+  </form>
+  <br>
+  <br>
 
   <form action="/user_logged_out">
     <button type="submit">Log Out</button>
   </form>
-
-  <form action="/build_recipe.html">
-    <button type="submit">Build a New Recipe</button>
-  </form>
+  <br>
+  <br>
 {% endblock %}
 
 <!-- have:  1) working title of app in header

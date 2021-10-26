@@ -2,7 +2,33 @@
 {% block title %}Recipe App - Create New Account{% endblock %}
 
 {% block body %}
-  <h1>Create new user account page</h1>
+  <h3> Add working title of app here </h3>
+  <br>
+
+  <h1>Create new user account</h1>
+    <form action="/user_profile_page">
+
+        <label for="username-input">Username:</label>
+        <input type="text" name="username" id="username-input"/>
+        <br>
+        <br>
+
+        <label for="email-input">Email:</label>
+        <input type="text" name="email" id="email-input"/>
+        <br>
+        <br>
+
+        <label for="password-input">Password:</label>
+        <input type="password" name="password" id="password-input">
+        <br>
+        <br>
+        
+      <button type="submit">Create My Account</button>
+    </form>
+  <br>
+  <br>
+  <br>
+
 {% endblock %}
 
 <!-- have 1) working title of app as header

@@ -4,8 +4,8 @@
 {% block body %}
   <h1>Display recipe to user</h1>
 
-  <form action="/display_recipe">
-    <label> Recipe is now (gluten-free) </label>    <!-- Need to link to user's selection from radio button on form-->
+  <form action="/user_profile_page">
+    <label> (Tell user that Recipe is now (gluten-free))</label>    <!-- Need to link to user's selection from radio button on form-->
     <br><br><br>
 
     <label for="recipe-name">Recipe Name:</label>
@@ -36,13 +36,19 @@
     <input type="text" name="recipe_instructions" id="recipe_instructions">
     <br><br>
 
-  <button type="submit">Save This Recipe to My Recipe Box</button>
-</form>
+    <button type="submit">Save This Recipe to My Recipe Box</button>
+  </form>
 
-<br><br>
+  <br><br>
   <p>
     Note: The only things that are changing are the ingredients-- they should be substituted
   </p>
+
+  <form action="/user_profile_page">
+    <label for= "cancel">To Cancel This Recipe and Return to My Profile Page:</label>
+    <button type="submit">Cancel This Recipe</button>
+    <br><br><br>
+  </form>
 {% endblock %}
 
 <!-- Have:    1) working title of app 

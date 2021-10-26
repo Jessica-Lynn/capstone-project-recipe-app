@@ -29,6 +29,10 @@ def homepage():
 def create_new_account():
     """Create new user account with email and password."""
 
+    username = request.args.get('username')
+    user_email = request.args.get('email')
+    user_password = request.args.get('password')
+    
     return render_template('create_new_account.html')
 
 
