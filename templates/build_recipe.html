@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Recipe App - Build Recipe{% endblock %}
+{% block title %}Share My Recipe App - Build Recipe{% endblock %}
 
 {% block body %}
-  <h1>Build a new recipe!</h1>
+  <h1>Build A New Recipe!</h1>
 
   <form action="/display_recipe">
     <label for= "conversion-type">Select how you want to change your recipe:</label><br>
-        <input type="radio" name="conversion-type" value="gluten-free">Make it Gluten-Free </input><br>
-        <input type="radio" name="conversion-type" value="vegan">Make it Vegan </input><br>
-        <input type="radio" name="conversion-type" value="halal">Make it Halal </input><br>
-        <input type="radio" name="conversion-type" value="kosher">Make it Kosher </input><br>
-        <input type="radio" name="conversion-type" value="dairy-free">Make it Dairy-Free </input><br>
-        <input type="radio" name="conversion-type" value="nut-free">Make it Nut-Free </input><br>
-        <input type="radio" name="conversion-type" value="peanut-free">Make it Peanut-Free </input>
+        <input type="radio" name="conversion-type" value="gluten-free">Make it Gluten-Free </input>
+        <!-- Advisor recommended adding other dietary specifications later and staying with just gluten-free for now -->
         <br><br><br>
 
     <label for="recipe-name">Recipe Name:</label>
@@ -31,9 +26,21 @@
     <input type="text" name="cook_time" id="cook_time">
     <br><br>
 
-    <label for="ingred_1">Add one Ingredient:</label>
-    <input type="text" name="ingred_1" id="ingred_1">       <!-- Add ingredient type -->
-    <br><br>
+    <label for="ingred_1">Add one Ingredient:</label><br>
+    <input type="radio" name="ingred_1" value="all purpose flour">all purpose flour </input><br>
+    <input type="radio" name="ingred_1" value="granulated sugar">granulated sugar </input><br>
+    <input type="radio" name="ingred_1" value="egg, whole">egg, whole </input><br>
+    <input type="radio" name="ingred_1" value="water">water </input><br>
+    <!-- Will add more later; just want a few to start with -->
+    <br><br><br>
+
+    <label for="ingred_1_M">Add measurement for that ingredient:</label><br>
+    <input type="radio" name="ingred_1_M" value="1/4 cup">1/4 cup </input><br>
+    <input type="radio" name="ingred_1_M" value="1/2 cup">1/2 cup </input><br>
+    <input type="radio" name="ingred_1_M" value="3/4 cup">3/4 cup </input><br>
+    <input type="radio" name="ingred_1_M" value="1 cup">1 cup </input><br>
+    <!-- Will add more later; just want a few to start with -->
+    <br><br><br>
 
     <label for="ingred_1_details">How that ingredient should be prepped:</label>    <!-- Add the prep details for that ingredient-->
     <input type="text" name="ingred_1_details" id="ingred_1_details">

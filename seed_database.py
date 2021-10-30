@@ -1,8 +1,5 @@
 """Script to Seed database for Recipe Conversion App"""
 
-#   Automatically populate the database with data:
-#       Use data from data/all_recipes.json to create recipes
-#       Create 4 random users; for each user, create 3 recipes with their ingredients
 
 import os
 import json
@@ -23,8 +20,8 @@ connect_to_db(server.app)
 db.create_all()
 
 #   Automatically populate the database with data:
-#       Use data from data/all_recipes.json to create recipes
-#       Create 5 random users; for each user, create recipes with their ingredients
+
+#       Create 5 random users
 
 
 GLUTEN_TO_GF= {

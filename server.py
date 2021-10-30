@@ -9,7 +9,7 @@ import crud
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
-app.secret_key = "chocolate"
+app.secret_key = "RANDOM SECRET KEY"
 app.jinja_env.undefined = StrictUndefined
 
 # Replace this with routes and view functions!
@@ -35,6 +35,7 @@ def create_new_account():
     
     return render_template('create_new_account.html')
 
+#need to set username to session; for create account and for log in
 
 
 @app.route('/user_profile_page')
@@ -47,15 +48,26 @@ def user_profile_page():
 
 @app.route('/build_recipe')
 def build_recipe():
-    """User can build a recipe and set it to dietary specification"""
+    """ User can build a recipe and set it to dietary specification """
 
     return render_template('build_recipe.html')
 
 
+@app.route('/get_ingredients')
+def get_ingred_from_user():
+    """ Gets ingredients user enters; saves to session """      #Trying to add ingredient to session; to then display on next page
+
+
+    ingred = request.args.get('ingred_1')           #Sets ingred to our request
+    session['ingred_1'] = ingred                    #Adds ingred to session so we can access it
+                                       
+    return render_template('/display_recipe',       #Displays ingredients on next page
+                            ingred_1=ingred_1)
+
 
 @app.route('/display_recipe')
 def display_recipe():
-    """User receives back recipe according to dietary specification"""
+    """ User receives back recipe according to dietary specification """
 
     return render_template('display_recipe.html')
 
