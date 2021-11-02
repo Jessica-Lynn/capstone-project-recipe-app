@@ -41,8 +41,8 @@ funfetti_cake_recipe = Recipe(user_id=1,                             #not gettin
                               recipe_instructions='mix, bake', 
                               num_servings='12 servings', 
                               prep_time_in_min='15 min', 
-                              cook_time_in_min='25 min', 
-                              image='imageURL')
+                              cook_time_in_min='25 min'             #removed image='imageURL'
+                              )
 db.session.add_all([funfetti_cake_recipe])
 db.session.commit() 
 
