@@ -48,10 +48,8 @@ class Recipe(db.Model):
 
     cook_time_in_min = db.Column(db.String(30))
 
-    image = db.Column(db.String(1000))    
-
     def __repr__(self):
-        return f'<Recipe recipe_id = {self.recipe_id} user_id = {self.user_id} recipe_name = {self.recipe_name} recipe_instructions = {self.recipe_instructions} num_servings = {self.num_servings} prep_time_in_min = {self.prep_time_in_min} cook_time_in_min = {self.cook_time_in_min} image = {self.image}>'
+        return f'<Recipe recipe_id = {self.recipe_id} user_id = {self.user_id} recipe_name = {self.recipe_name} recipe_instructions = {self.recipe_instructions} num_servings = {self.num_servings} prep_time_in_min = {self.prep_time_in_min} cook_time_in_min = {self.cook_time_in_min}>'
 
 
 class IngredientType(db.Model):
