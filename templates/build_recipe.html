@@ -2,58 +2,190 @@
 {% block title %}Share My Recipe App - Build Recipe{% endblock %}
 
 {% block body %}
-  <h1>Build A New Recipe!</h1>
+  <h1>Build A New Recipe</h1>
+  <br><br>
 
-  <form action="/display_recipe">
-    <label for= "conversion-type">Select how you want to change your recipe:</label><br>
-        <input type="radio" name="conversion-type" value="gluten-free">Make it Gluten-Free </input>
+  <h2>Let's get some info from the recipe you'd like to change.</h2>
+  <br><br>
+
+  <form action="/get_ingredients" method='post'>
+    <!-- <h3>Select how you want to change your recipe:</h3>
+    <label for= "conversion_type">Select one:</label><br>
+        <select name="conversion_type">
+          <option value="gluten-free">Make Recipe Gluten Free</option>
+        </select>
+        <br><br><br> -->
         <!-- Advisor recommended adding other dietary specifications later and staying with just gluten-free for now -->
-        <br><br><br>
-
-    <label for="recipe-name">Recipe Name:</label>
-    <input type="text" name="recipe_name" id="recipe-name"/>   <!-- Should this be the same as recipe_name in model.py? -->
+    
+    <label for="recipe_name">Recipe Name:</label>
+    <input type="text" name="recipe_name" id="recipe_name"/>   
     <br><br>
     
-    <label for="num_servings">Number of Servings:</label>
-    <input type="text" name="num_servings" id="num_servings">
-    <br><br>
-    
-    <label for="prep_time">Prep Time in Minutes:</label>
-    <input type="text" name="prep_time" id="prep_time">
-    <br><br>
-    
-    <label for="cook_time">Cook Time in Minutes:</label>
-    <input type="text" name="cook_time" id="cook_time">
-    <br><br>
-
-    <label for="ingred_1">Add one Ingredient:</label><br>
-    <input type="radio" name="ingred_1" value="all purpose flour">all purpose flour </input><br>
-    <input type="radio" name="ingred_1" value="granulated sugar">granulated sugar </input><br>
-    <input type="radio" name="ingred_1" value="egg, whole">egg, whole </input><br>
-    <input type="radio" name="ingred_1" value="water">water </input><br>
-    <!-- Will add more later; just want a few to start with -->
-    <br><br><br>
-
-    <label for="ingred_1_M">Add measurement for that ingredient:</label><br>
-    <input type="radio" name="ingred_1_M" value="1/4 cup">1/4 cup </input><br>
-    <input type="radio" name="ingred_1_M" value="1/2 cup">1/2 cup </input><br>
-    <input type="radio" name="ingred_1_M" value="3/4 cup">3/4 cup </input><br>
-    <input type="radio" name="ingred_1_M" value="1 cup">1 cup </input><br>
-    <!-- Will add more later; just want a few to start with -->
-    <br><br><br>
-
-    <label for="ingred_1_details">How that ingredient should be prepped:</label>    <!-- Add the prep details for that ingredient-->
-    <input type="text" name="ingred_1_details" id="ingred_1_details">
-    <br><br>
-
     <label for="recipe_instructions">Recipe Instructions:</label>
     <input type="text" name="recipe_instructions" id="recipe_instructions">
     <br><br>
 
+    <label for="num_servings">Number of Servings:</label>
+    <input type="text" name="num_servings" id="num_servings">
+    <br><br>
+    
+    <label for="prep_time_in_min">Prep Time in Minutes:</label>
+    <input type="text" name="prep_time_in_min" id="prep_time_in_min">
+    <br><br>
+    
+    <label for="cook_time_in_min">Cook Time in Minutes:</label>
+    <input type="text" name="cook_time_in_min" id="cook_time_in_min">
+    <br><br><br><br>
+    
+    <h3>Now, let's add some ingredients from your recipe.  We'll need some specific information:</h3>
+   
+    <label for="non_gf_flour">In your 'Regular Recipe', what type of NON-Gluten-Free flour is used?</label><br>
+      <select name="non_gf_flour">
+        <option value="all purpose flour">all purpose flour</option>
+        <option value="cake flour">cake flour</option>
+        <option value="whole grain flour">whole grain flour</option>
+      </select>
+    <br><br>
+
+    <label for="non_gf_flour_measure">What's the measurement for that NON-Gluten-Free Flour?</label><br>
+      <select name="non_gf_flour">
+      <option value="1/8 teaspoon">1/8 teaspoon</option>
+      <option value="1/4 teaspoon">1/4 teaspoon</option>
+      <option value="1/2 teaspoon">1/2 teaspoon</option>
+      <option value="1 teaspoon">1 teaspoon</option>
+      <option value="1/2 Tablesppon">1/2 Tablespoon</option>
+      <option value="1 Tablespoon">1 Tablespoon</option>
+      <!-- Find a way for user to increment/ multiply the option they choose: (example for 1 teaspoon, they can multiply by 3 -- 3 tsp.)-->
+      <!-- Will also want a checkbox?  So they can have 1 1/2 teaspoons-->
+      <option value="1/4 cup">1/4 cup</option>
+      <option value="1/3 cup">1/3 cup</option>
+      <option value="1/2 cup">1/2 cup</option>
+      <option value="2/3 cup">2/3 cup</option>
+      <option value="1 cup">1 cup</option>
+      <!-- Find a way for user to increment/ multiply the option they choose: (example for 1 cup, they can multiply by 3 -- 3 cups.)-->
+      <!-- Will also want a checkbox?  So they can have 1 1/2 cups-->
+      </select>
+    <br><br>
+  
+    <label for="non_gf_flour_prep">Are there any details on how that NON-Gluten-Free flour should be prepped (i.e. sifted etc.)?</label>    
+    <input type="text" name="non_gf_flour_prep" id="non_gf_flour_prep">
+    <br><br><br>
+  
+
+    <h3>Now we need to get info for all liquid ingredients you will be using to make the batter.</h3>
+    <label for="liquid_ingred">Select the liquid ingredients used.</label>
+    <!-- Will need to make this checkbox-- might have multiple options-->
+      <select name="liquid_ingred">
+        <option value="water">water</option>
+        <option value="vegetable oil">vegetable oil</option>
+        <option value="whole milk">milk</option>
+        <option value="buttermilk">buttermilk</option>
+        <option value="brewed coffee">brewed coffee</option>
+        <option value="melted unsalted butter">melted unsalted butter</option>
+        <option value="melted vegetable shortening">melted vegetable shortening</option>
+      </select>
+  <br><br>
+
+    <label for="liquid_measure">What's the measurement for that liquid?</label><br>
+    <select name="liquid_measure">
+      <option value="1/8 teaspoon">1/8 teaspoon</option>
+      <option value="1/4 teaspoon">1/4 teaspoon</option>
+      <option value="1/2 teaspoon">1/2 teaspoon</option>
+      <option value="1 teaspoon">1 teaspoon</option>
+      <option value="1/2 Tablesppon">1/2 Tablespoon</option>
+      <option value="1 Tablespoon">1 Tablespoon</option>
+      <!-- Find a way for user to increment/ multiply the option they choose: (example for 1 teaspoon, they can multiply by 3 -- 3 tsp.)-->
+      <!-- Will also want a checkbox?  So they can have 1 1/2 teaspoons-->
+      <option value="1/4 cup">1/4 cup</option>
+      <option value="1/3 cup">1/3 cup</option>
+      <option value="1/2 cup">1/2 cup</option>
+      <option value="2/3 cup">2/3 cup</option>
+      <option value="1 cup">1 cup</option>
+      <!-- Find a way for user to increment/ multiply the option they choose: (example for 1 cup, they can multiply by 3 -- 3 cups.)-->
+      <!-- Will also want a checkbox?  So they can have 1 1/2 cups-->
+    </select>
+  <br><br>
+
+    <label for="liquid_prep">How should that liquid should be prepped (i.e. room temp, chilled, heated etc.)?</label>    
+      <input type="text" name="liquid_prep" id="liquid_prep">
+    <br><br><br>
+    
+    <h3>Next, let's get the number of eggs used from your Regular Recipe.</h3>
+    <label for="num_eggs_whole">If using whole eggs, enter the total number of whole eggs:</label><br>
+    <select name="num_eggs_whole">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    <br><br>
+
+    <label for="num_egg_yolks">If using egg yolks, enter the total number of egg whites:</label><br>
+    <select name="num_egg_yolks">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    <br><br>
+
+    <label for="num_egg_whites">If using egg yolks, enter the total number of egg yolks:</label><br>
+    <select name="num_egg_whites">
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select>
+    <br><br>
+
+    <label for="egg_prep">How should the eggs be prepped (i.e. room temp, chilled, whisked etc.)?</label>    
+      <input type="text" name="egg_prep" id="egg_prep">
+      <br><br><br><br>
+
+    <h3>Now add the rest of your ingredients from your regular recipe, one at a time:</h3>
+      <label for="ingred_1">Enter the name of the ingredient:</label>
+      <input type="text" name="ingred_1">
+      <br><br>
+
+      <label for="ingred_1_M">Enter the Measurement for that ingredient:</label>
+      <input type="text" name="ingred_1_M">
+      <br><br>
+
+      <label for="ingred_1_details">Enter any prep details for the ingredient:</label>
+      <input type="text" name="ingred_1_details">
+      <br><br>
+      <!-- Can let user add up to 10 more ingredients like this -->
+
     <button type="submit">Build My Recipe</button>
   </form>
-  <br>
-  <br>
+  <br><br>
 
   <form action="/user_profile_page">
     <label for= "cancel">To Cancel This Recipe and Return to My Profile Page:</label>
@@ -62,13 +194,3 @@
   </form>
 {% endblock %}
 
-<!-- Have:   1) working title of app 
-        2) back to user profile button in upper right
-        3) form: user selects specification to convert recipe by (gluten-free)
-        4) input: user add recipe name
-        5) user- add info re: ingredients
-        6) user- add info re: prep/cook time and servings
-        7) user- add info re: instructions
-        8) space for stock image
-        9) button: to cancel and return to user profile Page
-        10) button: to get recipe conversion -->
