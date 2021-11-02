@@ -53,16 +53,37 @@ def build_recipe():
     return render_template('build_recipe.html')
 
 
-@app.route('/get_ingredients')
+@app.route('/get_ingredients', methods=['POST'])
 def get_ingred_from_user():
     """ Gets ingredients user enters; saves to session """      #Trying to add ingredient to session; to then display on next page
+    
+    GLUTEN_TO_GF = { 
+        '1/2 cup all purpose flour': (('1/2 cup', 'gluten-free flour'), ('1/8 tsp.', 'xantham gum')),
+        '1 cup all purpose flour': (('1 cup gluten-free flour'), ('1/4 tsp. xantham gum')),
+    }
 
+    recipe_name = request.form.get('recipe_name')
+    recipe_instructions = request.form.get('recipe_instructions')
+    num_servings = request.form.get('num_servings')
+    prep_time_in_min = request.form.get('prep_time_in_min')
+    cook_time_in_min = request.form.get('cook_time_in_min')
+    ingredient = request.form['ingred_1']
+    measurement = request.form['ingred_1_M']
+    details = request.form.get('ingred_1_details')
 
-    ingred = request.args.get('ingred_1')           #Sets ingred to our request
-    session['ingred_1'] = ingred                    #Adds ingred to session so we can access it
-                                       
-    return render_template('/display_recipe',       #Displays ingredients on next page
-                            ingred_1=ingred_1)
+    print(recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min, ingredient, measurement, details)  
+
+    # create a recipe object:
+    #       create_recipe(user_id, recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min, image)
+    crud.create_recipe(recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min)  #NOTE: user_id and image not defined- get errors
+
+    # f'{measurement} {ingredient}' check this as key in GLUTEN_TO_GF and grab the correct value/tuple
+    # with the above recipe you've just created, now create the ingredient object 
+    #   with the new converted ingredient and measurement based on the value/tuple above
+
+                                                  
+    # return redirect('/display_recipe')   
+    return 'Success'         
 
 
 @app.route('/display_recipe')
