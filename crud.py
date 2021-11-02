@@ -15,16 +15,16 @@ def create_user(email, password):
 
 
 
-def create_recipe(recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min, image):
+def create_recipe(user_id, recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min):
     """Create and return a new recipe."""
 
     recipe = Recipe(
+        user_id=user_id,
         recipe_name=recipe_name,
         recipe_instructions=recipe_instructions,
         num_servings=num_servings,
         prep_time_in_min=prep_time_in_min,
         cook_time_in_min=cook_time_in_min,
-        image=image
     )
 
     db.session.add(recipe)
@@ -46,10 +46,10 @@ def create_ingredient_type(ingredient_name):
 
 
 
-def create_ingredient_detail(measurement, prep_info):
+def create_ingredient_detail(measurement, prep_info, recipe, ingredient):
     """Create and return an ingredient's details using ingredient_id and recipe_id for a specific recipe."""
 
-    ingredient_detail = IngredientDetail(measurement=measurement, prep_info=prep_info)      #verify that I do not add forgein keys here because they are also on autoincrement
+    ingredient_detail = IngredientDetail(measurement=measurement, prep_info=prep_info, recipe=recipe, ingredient=ingredient)      #verify that I do not add forgein keys here because they are also on autoincrement
 
     db.session.add(recipe_ingredient)
     db.session.commit()
