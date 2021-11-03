@@ -3,7 +3,7 @@
 
 import os
 import json
-from random import choice, randint
+
 
 import crud
 from model import db, User, Recipe, IngredientType, IngredientDetail, connect_to_db   #added code here-- from model.py, I'm importing db, Recipe class, and connecting to db
@@ -33,11 +33,11 @@ GLUTEN_TO_GF= {
 for n in range(5):
     email = f"user{n}@test.com"  
     password = "test"
-    crud.create_user(email, password)
+    user = crud.create_user(email, password)
 
 
-funfetti_cake_recipe = Recipe(user_id=1,                             #not getting recipe_id from recipe class
-                              recipe_name='funfetti cake', 
+funfetti_cake_recipe = Recipe(user_id=1,
+                              recipe_name='funfetti cake',          
                               recipe_instructions='mix, bake', 
                               num_servings='12 servings', 
                               prep_time_in_min='15 min', 
