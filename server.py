@@ -6,6 +6,7 @@ from flask import (Flask, render_template, request, flash, session,
 from model import connect_to_db
 import crud
 
+
 from jinja2 import StrictUndefined
 
 app = Flask(__name__)
@@ -75,7 +76,7 @@ def get_ingred_from_user():
 
     # create a recipe object:
     #       create_recipe(user_id, recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min, image)
-    crud.create_recipe(recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min)  #NOTE: user_id and image not defined- get errors
+    crud.create_recipe(1, recipe_name, recipe_instructions, num_servings, prep_time_in_min, cook_time_in_min)  #removed image for now
 
     # f'{measurement} {ingredient}' check this as key in GLUTEN_TO_GF and grab the correct value/tuple
     # with the above recipe you've just created, now create the ingredient object 
