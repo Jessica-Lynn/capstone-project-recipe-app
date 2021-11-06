@@ -87,13 +87,24 @@ def get_ingred_from_user():
 
     recipe_flour_conversion = f'To make your recipe Gluten-Free, replace the {ap_flour} with {gf_flour} and add {xantham_gum}.'
 
+    crud.create_recipe(1, None, None, None, None, None)
+
+    crud.create_ingredient_type('gluten free flour')
+
+    crud.create_ingredient_detail(1, 1, recipe_flour_conversion, None)
+
+    return recipe_flour_conversion
+
+
+    #recipe_flour_conversion = f'To make your recipe Gluten-Free, replace the {ap_flour} with {gf_flour} and add {xantham_gum}.'
+
     #Add the info below later:
     #       Use a gluten-free flour blend intended for 1:1 all purpose flour to gluten-free flour substitutions.
     #       The gluten-free flour blend should not have xantham gum listed in its ingredient list.
     #       For best results, the xantham gum is added based on the amount of gluten-free flour used. 
     #       f'For your recipe that uses {gf_flour}, add {xantham_gum}.'
     
-    return recipe_flour_conversion
+    #return recipe_flour_conversion
 
 #   CREATE OBJECTS TO SAVE TO DATABASE
 #       The way model.py is set up-- have to create recipe object first
