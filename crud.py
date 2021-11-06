@@ -46,12 +46,12 @@ def create_ingredient_type(ingredient_name):
 
 
 
-def create_ingredient_detail(measurement, prep_info, recipe, ingredient):
+def create_ingredient_detail(recipe_id, ingredient_id, measurement, prep_info):
     """Create and return an ingredient's details using ingredient_id and recipe_id for a specific recipe."""
 
-    ingredient_detail = IngredientDetail(measurement=measurement, prep_info=prep_info, recipe=recipe, ingredient=ingredient)      #verify that I do not add forgein keys here because they are also on autoincrement
+    ingredient_detail = IngredientDetail(recipe_id=recipe_id, ingredient_id=ingredient_id, measurement=measurement, prep_info=prep_info)      #verify that I do not add forgein keys here because they are also on autoincrement
 
-    db.session.add(recipe_ingredient)
+    db.session.add(ingredient_detail)
     db.session.commit()
 
     return ingredient_detail
