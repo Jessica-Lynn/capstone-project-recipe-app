@@ -9,15 +9,40 @@
   <br><br>
 
   <form action="/get_ingredients" method='post'>
-    <!-- <h3>Select how you want to change your recipe:</h3>
-    <label for= "conversion_type">Select one:</label><br>
-        <select name="conversion_type">
-          <option value="gluten-free">Make Recipe Gluten Free</option>
+
+    <label for="ap_flour">Enter the total number of cups for "all purpose flour":</label><br>
+      <select name="ap_flour">
+          <option value="1 cup all purpose flour">1</option>
+          <option value="2 cups all purpose flour">2</option>
+          <option value="3 cups all purpose flour">3</option>
+          <option value="4 cups all purpose flour">4</option>
+          <option value="5 cups all purpose flour">5</option>
+          <option value="6 cups all purpose flour">6</option>
+          <option value="7 cups all purpose flour">7</option>
+          <option value="8 cups all purpose flour">8</option>
+          <option value="9 cups all purpose flour">9</option>
+          <option value="10 cups all purpose flour">10</option>
+          <option value="11 cups all purpose flour">11</option>
+          <option value="12 cups all purpose flour">12</option>
         </select>
-        <br><br><br> -->
-        <!-- Advisor recommended adding other dietary specifications later and staying with just gluten-free for now -->
+        <br><br>
+
+        <button type="submit">Build My Recipe</button>
+      </form>
+      <br><br>
     
-    <label for="recipe_name">Recipe Name:</label>
+      <form action="/user_profile_page">
+        <label for= "cancel">To Cancel This Recipe and Return to My Profile Page:</label>
+        <button type="submit">Cancel This Recipe</button>
+        <br><br><br>
+      </form>
+    {% endblock %}
+
+
+
+ <!------------------------------PREVIOUS CODE FOR INGREDIENT OPTIONS IS BELOW THIS LINE-------------------------------------------------------->   
+ <!-------------------------------------------------------------------------------------------------------------------------------------->   
+    <!-- <label for="recipe_name">Recipe Name:</label>
     <input type="text" name="recipe_name" id="recipe_name"/>   
     <br><br>
     
@@ -35,47 +60,13 @@
     
     <label for="cook_time_in_min">Cook Time in Minutes:</label>
     <input type="text" name="cook_time_in_min" id="cook_time_in_min">
-    <br><br><br><br>
-    
-    <!--
-    <h3>Now, let's add some ingredients from your recipe.  We'll need some specific information:</h3>
-   
-    <label for="non_gf_flour">In your 'Regular Recipe', what type of NON-Gluten-Free flour is used?</label><br>
-      <select name="non_gf_flour">
-        <option value="all purpose flour">all purpose flour</option>
-        <option value="cake flour">cake flour</option>
-        <option value="whole grain flour">whole grain flour</option>
-      </select>
-    <br><br>
+    <br><br><br><br> -->
 
-    <label for="non_gf_flour_measure">What's the measurement for that NON-Gluten-Free Flour?</label><br>
-      <select name="non_gf_flour">
-      <option value="1/8 teaspoon">1/8 teaspoon</option>
-      <option value="1/4 teaspoon">1/4 teaspoon</option>
-      <option value="1/2 teaspoon">1/2 teaspoon</option>
-      <option value="1 teaspoon">1 teaspoon</option>
-      <option value="1/2 Tablesppon">1/2 Tablespoon</option>
-      <option value="1 Tablespoon">1 Tablespoon</option>
-      Find a way for user to increment/ multiply the option they choose: (example for 1 teaspoon, they can multiply by 3 -- 3 tsp.)-->
-      <!-- Will also want a checkbox?  So they can have 1 1/2 teaspoons-->
-      <!--<option value="1/4 cup">1/4 cup</option>
-      <option value="1/3 cup">1/3 cup</option>
-      <option value="1/2 cup">1/2 cup</option>
-      <option value="2/3 cup">2/3 cup</option>
-      <option value="1 cup">1 cup</option>
-      Find a way for user to increment/ multiply the option they choose: (example for 1 cup, they can multiply by 3 -- 3 cups.)-->
-      <!-- Will also want a checkbox?  So they can have 1 1/2 cups-->
-      <!--</select>
-    <br><br> -->
   
-    <!-- <label for="non_gf_flour_prep">Are there any details on how that NON-Gluten-Free flour should be prepped (i.e. sifted etc.)?</label>    
-    <input type="text" name="non_gf_flour_prep" id="non_gf_flour_prep">
-    <br><br><br>
   
 
-    <h3>Now we need to get info for all liquid ingredients you will be using to make the batter.</h3>
-    <label for="liquid_ingred">Select the liquid ingredients used.</label>
-    Will need to make this checkbox-- might have multiple options-->
+    <!-- <h3>Now we need to get info for all liquid ingredients you will be using to make the batter.</h3>
+    <label for="liquid_ingred">Select the liquid ingredients used.</label> -->
       <!-- <select name="liquid_ingred">
         <option value="water">water</option>
         <option value="vegetable oil">vegetable oil</option>
@@ -170,7 +161,7 @@
       <input type="text" name="egg_prep" id="egg_prep">
       <br><br><br><br> -->
 
-    <h3>Now add the rest of your ingredients from your regular recipe, one at a time:</h3>
+    <!-- <h3>Now add the rest of your ingredients from your regular recipe, one at a time:</h3>
       <label for="ingred_1">Select the type of one ingredient:</label>
       <select name="ingred_1">
         <option value="all purpose flour">all purpose flour</option>
@@ -225,17 +216,8 @@
 
       <label for="ingred_1_details">Enter any prep details for the ingredient (i.e. room temp, chilled, etc.):</label>
       <input type="text" name="ingred_1_details">
-      <br><br>
+      <br><br> -->
       <!-- Can let user add up to 10 more ingredients like this -->
+      <!---------------------------------------------------------------------------------------------------------------------------------->
 
-    <button type="submit">Build My Recipe</button>
-  </form>
-  <br><br>
-
-  <form action="/user_profile_page">
-    <label for= "cancel">To Cancel This Recipe and Return to My Profile Page:</label>
-    <button type="submit">Cancel This Recipe</button>
-    <br><br><br>
-  </form>
-{% endblock %}
 
