@@ -88,10 +88,10 @@ class IngredientDetail(db.Model):
     ingredient_id = db.Column(db.Integer, 
                                 db.ForeignKey('ingredient_types.ingredient_id'))    #foreign key relating back to the ingredientType table
     
-    measurement = db.Column(db.String(30), 
+    measurement = db.Column(db.String, 
                             nullable=False)                                         #API has this as a string -- but for recipe conversion, double check if I would want Int or Float instead?
     
-    prep_info = db.Column(db.String(25))                        
+    prep_info = db.Column(db.String(1000))                        
 
     recipe = db.relationship('Recipe', backref='ingredient_details')
     ingredient = db.relationship('IngredientType', backref='ingredient_details')
